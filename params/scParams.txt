@@ -1,0 +1,98 @@
+% Spacecraft Parameters File for May Fly Mission
+% Initial Conditions are also set in this file
+
+% Dimensions for 16U Cubesat
+side            0.2463000 % (m)
+height          0.4470000 % (m)
+rtuna           0.0400004 % (m)
+htuna           0.0400004 % (m)
+rhosc_tuna      0.0831496 % (m)
+rtuna_mini      0.0224997 % (m)
+htuna_mini      0.0380000 % (m)
+
+% Mass
+mDry            10 % (kg)
+mWet            20 % (kg)
+
+% Volumetric Density
+sigma           709.6617 % (kg/m^3)
+                         % (placeholder until spacecraft is designed in solidworks)
+% Residual Magnetic Moment
+mom_b           1e-4*[0; 0; 0] % (A*m^2)
+
+% Aerodynamic Characteristics
+Cdrag           1.9 % Spherical drag approximation
+Asph            0.1569 % Drag sphere area
+drag_mdl        'Spherical' % 'Spherical' or 'FMF' (free-molecular-flow)
+
+% Sensors
+range_mag       2.5e5
+nDensity_mag    14   % noise density (nT/sqrt(Hz))
+errAlign_mag    0.05 % alignment error
+bias            [5000; 3000; 6000] % hard iron biases (nT)
+Dvec            [0.05; 0.10; 0.05; 0.05; 0.05; 0.05] % vector of scale factors
+                                                 % for D matrix in mag 
+                                                 % measurement model
+                                                 % (3 x 3,[D11 D22 D33 D12
+                                               % D23 D32])
+
+range_gyro      34.9066 % (rad/s)
+nDensity_gyro   0.0035 % (deg/sqrt(Hz))
+errAlign_gyro   0.05 % alignment error (deg) 
+          
+
+range_accel     16 % Number of g's (Earth)
+nDensity_accel  1.4e-4 % noise density (g/sqrt(Hz))
+errAlign_accel  0.05 % alignment error (deg)
+
+% Actuators
+mtorquer        0.24 % (A-m^2) assume bang-bang control until relation between PWM 
+mcoil           0.13 % (A-m^2) and output moment is found
+
+
+% Thrusters
+Tavg            1 % 1 N thruster
+Isp             182
+Prop            "Hydrogen Peroxide Monoprop" % Need to develope model
+
+% Initial Conditions
+% orbital
+lla_launch      [37.9395; -75.4572; 12.3]
+alt_dep         185e3 % (rp for Carrico's sim)
+sma             6.6706000e6 % (Currently based on Carrico's IC)
+ecc             0.0161154 % (Carrico's IC) 0.0161321
+inc             40  % (deg)
+start_epoch     2455197.5; % epoch at which spacecraft enters 
+                                     % orbit as a Julian date number
+
+% Attitude and Angular Velocity
+Attitude_Type   'quaternion' % either 'quaternion' or 'DCM'
+qba0            [0.408248290463863; 0.408248290463863; 0.408248290463863; 0.707106781186547] % initial attitude as quaternion
+Cba0            [0.333333333333332 0.910683602522959 -0.244016935856292; -0.244016935856292 0.333333333333332 0.910683602522959; 0.910683602522959 -0.244016935856292 0.333333333333332] % initial attitude as DCM
+omega0          [0.08; -0.1; 0.3] % initial angular velocity (rad/s)
+
+% Attitude Estimation
+est_method      'none' % Inertial or Filter
+qbahat0         [0; 0; 0; 1] % initial quaternion estimate starts with no error
+Cbahat0         [1 0 0; 0 1 0; 0 0 1] % initial DCM estimate
+    % Complimentary Filter
+bgyro0          [0; 0; 0] % initial gyro bias estimate
+kerror          0.8
+kbias           1.3
+    % Low-Pass Drivative Filter
+f_cutoff        6.2832 % rad/s
+x_filter        [0; 0; 0] % filter states
+
+% Attitude Control
+ctrl_method     'none'
+kprop           1.2 % proportional control gain
+kderiv          0.9 % derivative control gain
+kmag            1.5 % magnetic control gain
+
+
+
+
+
+
+
+

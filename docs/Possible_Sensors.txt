@@ -1,0 +1,9 @@
+Inertial (Rate Sensors)
+	- VN300 gyroscope (should find better gyro)
+	- VN300 accelerometer (should find better accelerometer
+
+Static (Physical vector sensor)
+	- VN300 Mag (should find better mag)
+	- NSS GPS Reciever: https://www.cubesatshop.com/product/nss-gps-receiver/
+	- NSS Sun Sensor: https://www.cubesatshop.com/product/nss-cubesat-sun-sensor/
+

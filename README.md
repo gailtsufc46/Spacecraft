@@ -1,0 +1,1 @@
+This folder contains a simulation enviroment for my semester project for which we must simulate the attitude dynamics and control of a specific spacecraft in Earth orbit.

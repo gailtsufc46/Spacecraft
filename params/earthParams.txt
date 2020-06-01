@@ -1,0 +1,16 @@
+% Planetary Parameters for Earth
+Rmean             6.3712e6 % mean Earth radius (km)
+mu_e              3.986004418e14 % gravitational parameter (m^3/s^2)
+
+% Pertubation Model Constants
+J2const         1.08262645e-3
+
+
+% Magnetic Field Model
+mag_epoch       2.449718500000000e6 % Julian date for geomagnetic field 
+                                    % reference epoch
+
+% Atmosphere Model
+atmDen_mdl      'US Standard Atmosphere' % Earth atmospheric model
+
+acoeff          [7.001985e-2; -4.336216e-3; -5.009831e-3; 1.621827e-4; -2.471283e-6; -7.189421e-11; 1.060067e-13];

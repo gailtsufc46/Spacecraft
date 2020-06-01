@@ -1,0 +1,1 @@
+Directory containing parameter files for different object within the simulation and for the simulation itself.

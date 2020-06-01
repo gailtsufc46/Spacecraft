@@ -1,0 +1,6 @@
+Momentum Exchange Devices
+	-Reaction Wheel
+
+Reaction Devices
+	-Cube torquer and coil: https://www.cubesatshop.com/product/cubetorquer-and-cubecoil/
+	-Generic water thruster: James
