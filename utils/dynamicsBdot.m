@@ -34,6 +34,7 @@ J2 = params.Earth.J2const;
 mag_epoch = params.Earth.mag_epoch;
 
 % spacecraft
+m_sc = params.sc.mWet;
 AttType = params.sc.Attitude_Type;
 I = params.sc.IB_b;
 start_epoch = params.sc.start_epoch;
@@ -136,6 +137,7 @@ elseif strcmp(ctrl_method,'bang-bang')
     mb = -m_max.*sign(bhatDot);
 elseif strcmp(ctrl_method,'none')
     mb = [0;0;0];
+    b_b = [0;0;0];
 else
     error('Not a valid control method for this function!\n');
 end
@@ -145,7 +147,7 @@ mom = mom+tau_ctrl;
 %% Orbital Dynamics
 % Calculate xdot1 with gravity and other forces    
 xdot1 = [x(4:6); -mu*x(1:3)/r^3 + (3*mu*J2*R^2/2/r^5)*(((5/r^2)* ... 
-                 (x(1:3)'*I3)-1)*x(1:3)-2*(x(1:3)'*I3)*I3) + force];
+                 (x(1:3)'*I3)-1)*x(1:3)-2*(x(1:3)'*I3)*I3) + force/m_sc];
                            
 %% Attitude Dynamics
 if strcmp(AttType,'DCM')

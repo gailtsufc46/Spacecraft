@@ -49,6 +49,11 @@ errAlign_accel  0.05 % alignment error (deg)
 mtorquer        0.24 % (A-m^2) assume bang-bang control until relation between PWM 
 mcoil           0.13 % (A-m^2) and output moment is found
 
+Iwheel          [1.667e-6;1.667e-6;1.667e-6] % axial MOI's for momentum wheels in all three axes(kg-m^2)
+dwheel          [0; 0; 0] % translational distance of wheel spin axes from body axes 
+mwheel          [0.1;0.1;0.1] % mass of momentum wheels
+gammaDot_w      [0; 0; 0] % initial momentum wheel rates (rad/s)
+gammaDot_wdes   [0; 0; 0] % desired steady state wheel speeds, used for momentum management via magentorquer (rad/s)
 
 % Thrusters
 Tavg            1 % 1 N thruster
@@ -62,6 +67,9 @@ alt_dep         185e3 % (rp for Carrico's sim)
 sma             6.6706000e6 % (Currently based on Carrico's IC)
 ecc             0.0161154 % (Carrico's IC) 0.0161321
 inc             40  % (deg)
+OMEGA           0 % (deg)
+omega           0 % (deg)
+theta           0 % (deg)
 start_epoch     2455197.5; % epoch at which spacecraft enters 
                                      % orbit as a Julian date number
 
@@ -69,10 +77,10 @@ start_epoch     2455197.5; % epoch at which spacecraft enters
 Attitude_Type   'quaternion' % either 'quaternion' or 'DCM'
 qba0            [0.408248290463863; 0.408248290463863; 0.408248290463863; 0.707106781186547] % initial attitude as quaternion
 Cba0            [0.333333333333332 0.910683602522959 -0.244016935856292; -0.244016935856292 0.333333333333332 0.910683602522959; 0.910683602522959 -0.244016935856292 0.333333333333332] % initial attitude as DCM
-omega0          [0.08; -0.1; 0.3] % initial angular velocity (rad/s)
+omega0          [0; 0; 0] %[0.08; -0.1; 0.3] % initial angular velocity (rad/s)
 
 % Attitude Estimation
-est_method      'none' % Inertial or Filter
+est_method      'CF' % Inertial or Filter
 qbahat0         [0; 0; 0; 1] % initial quaternion estimate starts with no error
 Cbahat0         [1 0 0; 0 1 0; 0 0 1] % initial DCM estimate
     % Complimentary Filter
@@ -84,10 +92,11 @@ f_cutoff        6.2832 % rad/s
 x_filter        [0; 0; 0] % filter states
 
 % Attitude Control
-ctrl_method     'none'
+ctrl_method     'PD w/ Mag'
 kprop           1.2 % proportional control gain
-kderiv          0.9 % derivative control gain
+kderiv          0.6 % derivative control gain
 kmag            1.5 % magnetic control gain
+khmag           1.2 % magnetic control gain for momentum management magnetorquer with control wheels
 
 
 

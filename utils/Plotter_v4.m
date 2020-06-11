@@ -176,7 +176,49 @@ title('$\frac{E_{Bp/a}-E(0)_{Bp/a}}{E(0)_{Bp/a}}$ vs $t$','fontsize', ...
 savePath = strcat(folder,figType,ext);
 saveas(gcf,savePath);
 
+%% Euler Angle Error from Complimentary Filter (3-2-1 Sequence)
+if strcmp(est_method,'CF')
+    figType = 'euler_err_CF';
+    figure(10)
+    subplot(3,1,1)
+    plot(tout,eulerEstErr_CF(1,:)*rad2deg), xlabel('$t$ (s)','fontsize',14,'interpreter','latex');
+    ylabel('$\phi^{CF}_{err}$ (deg)','fontsize',14,'interpreter','latex'); 
+    title('$\phi^{CF}_{err}$ vs $t$','fontsize',16,'interpreter','latex');
 
+    subplot(3,1,2)
+    plot(tout,eulerEstErr_CF(2,:)*rad2deg), xlabel('$t$ (s)','fontsize',14,'interpreter','latex');
+    ylabel('$\theta^{CF}_{err}$ (deg)','fontsize',14,'interpreter','latex'); 
+    title('$\theta^{CF}_{err}$ vs $t$','fontsize',16,'interpreter','latex');
+
+    subplot(3,1,3)
+    plot(tout,eulerEstErr_CF(3,:)*rad2deg), xlabel('$t$ (s)','fontsize',14,'interpreter','latex');
+    ylabel('$\psi^{CF}_{err}$ (deg)','fontsize',14,'interpreter','latex'); 
+    title('$\psi^{CF}_{err}$ vs $t$','fontsize',16,'interpreter','latex');
+
+    savePath = strcat(folder,figType,ext);
+    saveas(gcf,savePath);
+end
+
+%% Momentum Wheel Speeds
+figType = 'mwheel_speeds';
+figure(10)
+subplot(3,1,1)
+plot(tout,gammaDot(1,:)*rad2deg), xlabel('$t$ (s)','fontsize',14,'interpreter','latex');
+ylabel('$\dot{\gamma}_{1}$ (deg)','fontsize',14,'interpreter','latex'); 
+title('$\dot{\gamma}_{1}$ vs $t$','fontsize',16,'interpreter','latex');
+
+subplot(3,1,2)
+plot(tout,gammaDot(2,:)*rad2deg), xlabel('$t$ (s)','fontsize',14,'interpreter','latex');
+ylabel('$\dot{\gamma}_{2}$ (deg)','fontsize',14,'interpreter','latex'); 
+title('$\dot{\gamma}_{2}$ vs $t$','fontsize',16,'interpreter','latex');
+
+subplot(3,1,3)
+plot(tout,gammaDot(3,:)*rad2deg), xlabel('$t$ (s)','fontsize',14,'interpreter','latex');
+ylabel('$\dot{\gamma}_{3}$ (deg)','fontsize',14,'interpreter','latex'); 
+title('$\dot{\gamma}_{3}$ vs $t$','fontsize',16,'interpreter','latex');
+
+savePath = strcat(folder,figType,ext);
+saveas(gcf,savePath);
 %% Animtate Attitude
 if Animate_Att
     figType = 'AttAnim';

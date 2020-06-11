@@ -31,6 +31,10 @@ atmDen_mdl = params.Earth.atmDen_mdl;
 a = params.sc.sma;
 e = params.sc.ecc;
 inc = params.sc.inc*deg2rad;
+OMEGA = params.sc.OMEGA*deg2rad;
+omega = params.sc.omega*deg2rad;
+theta = params.sc.theta*deg2rad;
+
 
 % Spacecraft Initial Conditions
 AttType = params.sc.Attitude_Type;
@@ -52,9 +56,6 @@ elseif strcmp(atmDen_mdl,'US Standard Atmosphere')
 end
 
 %% Assemble Initial Conditions for Spacecraft
-OMEGA = 0; % assume perigee at equator with RAAN = 0;
-omega = 0;
-theta = 0;
 
 [r,v,~] = orbEl2rv(a, e, theta, OMEGA, omega, inc, mu); % transform 
                                                         % orbital elements
@@ -75,7 +76,7 @@ options = odeset('AbsTol',absTol,'RelTol',relTol,'Events',event_func);
 T = 2*pi*sqrt(a^3/mu);
 tspan = [0 nOrbits*T];
 
-[tout,xout] = ode45(@(t,x) dynamicsBdot(t,x,params),tspan,x0,options);
+[tout,xout] = ode15s(@(t,x) dynamicsBdot(t,x,params),tspan,x0,options);
 
 %% Post Process Data
 Post_Process_v4

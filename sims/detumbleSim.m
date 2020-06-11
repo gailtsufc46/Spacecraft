@@ -32,6 +32,7 @@ a = params.sc.sma;
 e = params.sc.ecc;
 inc = params.sc.inc*deg2rad;
 
+
 % Spacecraft Initial Conditions
 AttType = params.sc.Attitude_Type;
 omega0 = params.sc.omega0;

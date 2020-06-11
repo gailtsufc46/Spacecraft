@@ -8,8 +8,8 @@ JDoffset                1721058.5; % Offset of Julian day start from
                                      serial datenumber
 
 % Integrator
-absTol                  1e-12
-relTol                  1e-12
+absTol                  1e-11
+relTol                  1e-11
 
 % Gravity Model
 J2on                    1 % 1 if J2 pertubation is to be included, 0 if not
@@ -17,11 +17,11 @@ J2on                    1 % 1 if J2 pertubation is to be included, 0 if not
 % Forces and Torques to Model Besides Gravity Force
 mag_model               1 % include magnetic field model
 gg_model                1 % include gravity gradient model
-atm_model               1 % include gravity gradient model
+atm_model               0 % include gravity gradient model
 SRP_model               0 % include gravity gradient model
 
 % Animations
 Animate_Att             0 % include attitude animation
 
 % Figures
-figFolder               'OrbitFab/AtmTest/' % file path to save figures to inside figs folder
+figFolder               'OrbitFab/wheels/' % file path to save figures to inside figs folder

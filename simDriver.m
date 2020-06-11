@@ -3,6 +3,7 @@
 % Written by Garrett Ailts
 
 clear all, close all %#ok<CLALL>
+
 %% Add Directories to Path
 addpath(genpath('utils/'));
 addpath(genpath('utils/Provided_Functions/'));
@@ -17,6 +18,7 @@ addpath(genpath('models/'));
 
 %% Choose Simulation
 simType = input('Which simulation would you like to run?\n','s');
+tstart = now;
 params = struct();
 sc = struct();
 Earth = struct();
@@ -61,6 +63,9 @@ end
 if strcmp(simType,'Orbit Fab Sim')
     results = OrbitFabSim(params);
 end
+if strcmp(simType,'Orbit Fab Sim v2')
+    results = OrbitFabSimv2(params);
+end
 
 
 %% Save Results
@@ -72,5 +77,8 @@ for lv1 = 1:100
         break;
     end
 end
+tend = now;
+telapsed = (tend-tstart)*86400;
+fprintf("Elapsed time for the simulation is %.1f\n",telapsed);
 
 
