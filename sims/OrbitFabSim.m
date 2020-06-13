@@ -75,9 +75,14 @@ options = odeset('AbsTol',absTol,'RelTol',relTol,'Events',event_func);
 
 T = 2*pi*sqrt(a^3/mu);
 tspan = [0 nOrbits*T];
-
-[tout,xout] = ode15s(@(t,x) dynamicsBdot(t,x,params),tspan,x0,options);
-
+c = parcluster;
+job314 = c.batch(@ode15s,2,{@(t,x) dynamicsBdot(t,x,params),tspan,x0,options});
+wait(job314, 'finished');
+resultsin = fetchOutputs(job314);
+delete(job314);
+%[tout,xout] = ode15s(@(t,x) dynamicsBdot(t,x,params),tspan,x0,options);
+tout = resultsin{1};
+xout = resultsin{2};
 %% Post Process Data
 Post_Process_v4
 results.tout = tout;

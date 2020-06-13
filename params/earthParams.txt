@@ -11,6 +11,6 @@ mag_epoch       2.449718500000000e6 % Julian date for geomagnetic field
                                     % reference epoch
 
 % Atmosphere Model
-atmDen_mdl      'US Standard Atmosphere' % Earth atmospheric model
+atmDen_mdl      'Jacchia 70' % Earth atmospheric model
 
 acoeff          [7.001985e-2; -4.336216e-3; -5.009831e-3; 1.621827e-4; -2.471283e-6; -7.189421e-11; 1.060067e-13];

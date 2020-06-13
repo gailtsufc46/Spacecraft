@@ -42,17 +42,23 @@ for lv1 = 1:length(tout)
     E(lv1) = Etot(xout(:,lv1),r,Cba,ba,params);
     [phi, theta, psi] = DCM2Euler321(Cba);
     eulerAngs(:,lv1) = [phi; theta; psi];
-    Ceb_CF = Cea_CF*Cba'; % error DCM between estimated frame and body frame
-    [phierr_CF, thetaerr_CF, psierr_CF] = DCM2Euler321(Ceb_CF);
-    eulerEstErr_CF(:,lv1) = [phierr_CF; thetaerr_CF; psierr_CF];
+    if strcmp(est_method,'CF')
+        Ceb_CF = Cea_CF*Cba'; % error DCM between estimated frame and body frame
+        [phierr_CF, thetaerr_CF, psierr_CF] = DCM2Euler321(Ceb_CF);
+        eulerEstErr_CF(:,lv1) = [phierr_CF; thetaerr_CF; psierr_CF];
+    end
 end
 if strcmp(AttType,'DCM')
     wba = xout(16:18,:);
-    gammaDot = xout(19:21,:);  
+    if strcmp(est_method,'CF')
+        gammaDot = xout(19:21,:);
+    end
 else
     q = xout(7:10,:);      
     wba = xout(11:13,:);
-    gammaDot = xout(14:16,:);
+    if strcmp(est_method,'CF')
+        gammaDot = xout(14:16,:);
+    end
 end
 
 

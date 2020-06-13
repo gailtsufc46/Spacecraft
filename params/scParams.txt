@@ -64,13 +64,13 @@ Prop            "Hydrogen Peroxide Monoprop" % Need to develope model
 % orbital
 lla_launch      [37.9395; -75.4572; 12.3]
 alt_dep         185e3 % (rp for Carrico's sim)
-sma             6.6706000e6 % (Currently based on Carrico's IC)
-ecc             0.0161154 % (Carrico's IC) 0.0161321
+sma             6.6637000e6 % (Currently based on Carrico's IC)
+ecc             0.016132178 % (Carrico's IC) 0.0161321
 inc             40  % (deg)
 OMEGA           0 % (deg)
 omega           0 % (deg)
 theta           0 % (deg)
-start_epoch     2455197.5; % epoch at which spacecraft enters 
+start_epoch     2.4603105e6; % epoch at which spacecraft enters 
                                      % orbit as a Julian date number
 
 % Attitude and Angular Velocity
@@ -80,7 +80,7 @@ Cba0            [0.333333333333332 0.910683602522959 -0.244016935856292; -0.2440
 omega0          [0; 0; 0] %[0.08; -0.1; 0.3] % initial angular velocity (rad/s)
 
 % Attitude Estimation
-est_method      'CF' % Inertial or Filter
+est_method      'none' % Inertial or Filter
 qbahat0         [0; 0; 0; 1] % initial quaternion estimate starts with no error
 Cbahat0         [1 0 0; 0 1 0; 0 0 1] % initial DCM estimate
     % Complimentary Filter
@@ -92,7 +92,7 @@ f_cutoff        6.2832 % rad/s
 x_filter        [0; 0; 0] % filter states
 
 % Attitude Control
-ctrl_method     'PD w/ Mag'
+ctrl_method     'none'
 kprop           1.2 % proportional control gain
 kderiv          0.6 % derivative control gain
 kmag            1.5 % magnetic control gain

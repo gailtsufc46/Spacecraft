@@ -69,14 +69,14 @@ end
 
 
 %% Save Results
-for lv1 = 1:100
-    sname = sprintf('sim%d',lv1);
-    if ~exist(sname,'file')
-        fname = sprintf('data/output/sim%d.mat',lv1);
-        save(fname,'results');
-        break;
-    end
-end
+% for lv1 = 1:100
+%     sname = sprintf('sim%d',lv1);
+%     if ~exist(sname,'file')
+%         fname = sprintf('data/output/sim%d.mat',lv1);
+%         save(fname,'results');
+%         break;
+%     end
+% end
 tend = now;
 telapsed = (tend-tstart)*86400;
 fprintf("Elapsed time for the simulation is %.1f\n",telapsed);

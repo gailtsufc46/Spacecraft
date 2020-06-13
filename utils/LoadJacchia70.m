@@ -16,8 +16,8 @@
 %  indata(12) = geomagnetic activity index
 
 indata(12) = 3;
-indata(11) = 100;
-indata(10) = 40.07;
+indata(11) = 150;
+indata(10) = 100;
 indata(9) = 1;
 
 

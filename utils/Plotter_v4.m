@@ -200,25 +200,27 @@ if strcmp(est_method,'CF')
 end
 
 %% Momentum Wheel Speeds
-figType = 'mwheel_speeds';
-figure(10)
-subplot(3,1,1)
-plot(tout,gammaDot(1,:)*rad2deg), xlabel('$t$ (s)','fontsize',14,'interpreter','latex');
-ylabel('$\dot{\gamma}_{1}$ (deg)','fontsize',14,'interpreter','latex'); 
-title('$\dot{\gamma}_{1}$ vs $t$','fontsize',16,'interpreter','latex');
+if strcmp(est_method,'CF')
+    figType = 'mwheel_speeds';
+    figure(10)
+    subplot(3,1,1)
+    plot(tout,gammaDot(1,:)*rad2deg), xlabel('$t$ (s)','fontsize',14,'interpreter','latex');
+    ylabel('$\dot{\gamma}_{1}$ (deg)','fontsize',14,'interpreter','latex'); 
+    title('$\dot{\gamma}_{1}$ vs $t$','fontsize',16,'interpreter','latex');
 
-subplot(3,1,2)
-plot(tout,gammaDot(2,:)*rad2deg), xlabel('$t$ (s)','fontsize',14,'interpreter','latex');
-ylabel('$\dot{\gamma}_{2}$ (deg)','fontsize',14,'interpreter','latex'); 
-title('$\dot{\gamma}_{2}$ vs $t$','fontsize',16,'interpreter','latex');
+    subplot(3,1,2)
+    plot(tout,gammaDot(2,:)*rad2deg), xlabel('$t$ (s)','fontsize',14,'interpreter','latex');
+    ylabel('$\dot{\gamma}_{2}$ (deg)','fontsize',14,'interpreter','latex'); 
+    title('$\dot{\gamma}_{2}$ vs $t$','fontsize',16,'interpreter','latex');
 
-subplot(3,1,3)
-plot(tout,gammaDot(3,:)*rad2deg), xlabel('$t$ (s)','fontsize',14,'interpreter','latex');
-ylabel('$\dot{\gamma}_{3}$ (deg)','fontsize',14,'interpreter','latex'); 
-title('$\dot{\gamma}_{3}$ vs $t$','fontsize',16,'interpreter','latex');
+    subplot(3,1,3)
+    plot(tout,gammaDot(3,:)*rad2deg), xlabel('$t$ (s)','fontsize',14,'interpreter','latex');
+    ylabel('$\dot{\gamma}_{3}$ (deg)','fontsize',14,'interpreter','latex'); 
+    title('$\dot{\gamma}_{3}$ vs $t$','fontsize',16,'interpreter','latex');
 
-savePath = strcat(folder,figType,ext);
-saveas(gcf,savePath);
+    savePath = strcat(folder,figType,ext);
+    saveas(gcf,savePath);
+end
 %% Animtate Attitude
 if Animate_Att
     figType = 'AttAnim';
