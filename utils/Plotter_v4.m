@@ -63,7 +63,7 @@ saveas(gcf,savePath);
 if atm_model
     figType = 'sc_altitude';
     figure(4)
-    plot(tout,h), xlabel('$t$ (s)','fontsize',14,'interpreter','latex');
+    plot(tout/86400,h/1000), xlabel('$t$ (days)','fontsize',14,'interpreter','latex');
     ylabel('$Altitude$ (km)','fontsize',14,'interpreter','latex'); 
     title('$Altitude$ vs $t$','fontsize',16,'interpreter','latex');
     savePath = strcat(folder,figType,ext);

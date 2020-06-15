@@ -23,7 +23,7 @@ mom_b           1e-4*[0; 0; 0] % (A*m^2)
 % Aerodynamic Characteristics
 Cdrag           1.9 % Spherical drag approximation
 Asph            0.1569 % Drag sphere area
-drag_mdl        'Spherical' % 'Spherical' or 'FMF' (free-molecular-flow)
+drag_mdl        'FMF' % 'Spherical' or 'FMF' (free-molecular-flow)
 
 % Sensors
 range_mag       2.5e5
